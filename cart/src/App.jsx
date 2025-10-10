@@ -1,19 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SignUp from "./pages/SignUp";
-import SignIn from "./pages/SignIn";
-import Store from "./pages/Store"; // placeholder for now
+import Navbar from "./components/Navbar";
+import UserPage from "./pages/UserPage";
+import { Provider } from "react-redux";
+import store from "./features/store";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/store" element={<Store />} />
-      </Routes>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<UserPage />} />
+        </Routes>
+      </Router>
+    </Provider>
   );
 }
 
